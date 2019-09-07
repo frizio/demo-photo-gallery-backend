@@ -4,7 +4,7 @@ export function home(req: Request, res: Response): Response {
     return res.send('Hello from demo-photo-gallery API');
 }
 
-export function createPhoto(req: Request, res: Response): Response {
+export function createPhoto(req: Request, res: Response) {
     console.log('Saving photo');
     console.log(req.body);
     return res.json(
@@ -14,7 +14,7 @@ export function createPhoto(req: Request, res: Response): Response {
     );  
 }
 
-export function readPhoto(req: Request, res: Response): Response {
+export function readPhoto(req: Request, res: Response) {
     return res.json(
         {
             message: 'The photo....'
