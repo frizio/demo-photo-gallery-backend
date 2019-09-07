@@ -28,10 +28,8 @@ export async function readPhotos(req: Request, res: Response): Promise<Response>
     return res.json(photos);
 }
 
-export function readPhoto(req: Request, res: Response) {
-    return res.json(
-        {
-            message: 'The photo....'
-        }
-    );
+export async function readPhoto(req: Request, res: Response): Promise<Response> {
+    const {id} = req.params;
+    const photo = await Photo.findById(id);
+    return res.json(photo);
 }
