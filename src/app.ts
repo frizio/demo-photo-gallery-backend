@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import indexRoutes from "./routes/index";
+import path from "path";
 
 const app = express();
 
@@ -12,5 +13,8 @@ app.use(morgan('dev'));
 
 // ROUTE
 app.use('/routes', indexRoutes);
+
+// Folder for uploaded images
+app.use( '/uploads', express.static(path.resolve('uploads')) );
 
 export default app;
