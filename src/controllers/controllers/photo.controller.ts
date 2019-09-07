@@ -5,7 +5,7 @@ export function home(req: Request, res: Response): Response {
     return res.send('Hello from demo-photo-gallery API');
 }
 
-export async function createPhoto(req: Request, res: Response) {
+export async function createPhoto(req: Request, res: Response): Promise<Response> {
     console.log('Saving photo');
     const {title, description} = req.body; 
     const newPhoto = {
@@ -17,9 +17,15 @@ export async function createPhoto(req: Request, res: Response) {
     await photo.save();
     return res.json(
         {
-            message: 'Photo successfull saved'
+            message: 'Photo successfull saved',
+            photo
         }
     );  
+}
+
+export async function readPhotos(req: Request, res: Response): Promise<Response> {
+    const photos = await Photo.find();
+    return res.json(photos);
 }
 
 export function readPhoto(req: Request, res: Response) {
