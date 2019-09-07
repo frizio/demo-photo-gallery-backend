@@ -13,7 +13,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 // ROUTE
-app.use('/routes', indexRoutes);
+app.use('/api', indexRoutes);
 
 // Folder for uploaded images
 app.use( '/uploads', express.static(path.resolve('uploads')) );
