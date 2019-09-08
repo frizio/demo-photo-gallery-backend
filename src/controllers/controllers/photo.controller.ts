@@ -33,3 +33,15 @@ export async function readPhoto(req: Request, res: Response): Promise<Response> 
     const photo = await Photo.findById(id);
     return res.json(photo);
 }
+
+export async function deletePhoto(req: Request, res: Response): Promise<Response> {
+    const {id} = req.params;
+    const photo = await Photo.findByIdAndRemove(id);
+    
+    return res.json(
+        {
+            message: 'Photo deleted',
+            photo
+        }
+    );
+}
